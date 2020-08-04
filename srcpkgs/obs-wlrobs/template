@@ -1,0 +1,20 @@
+# Template file for 'obs-wlrobs'
+pkgname=obs-wlrobs
+version=20200812
+revision=2
+_rev=c0b86a1f57b8
+wrksrc=wlrobs-$_rev
+build_style=meson
+configure_args="$(vopt_bool dmabuf use_dmabuf)"
+hostmakedepends="pkg-config"
+makedepends="wayland-devel libX11-devel obs-devel $(vopt_if dmabuf 'libdrm-devel libglvnd-devel')"
+short_desc="OBS Studio plugin for screen capture on wlroots based compositors"
+maintainer="iterus <iterus@protonmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://hg.sr.ht/~scoopta/wlrobs"
+distfiles="$homepage/archive/$_rev.tar.gz"
+# https://todo.sr.ht/~sircmpwn/hg.sr.ht/33
+checksum=@e01ec6535a7e7b22d6dcc3d63ebe72c82474a2421f82a24e23d669f1f4fb573c
+
+build_options="dmabuf"
+desc_option_dmabuf="Enable dmabuf backend"
