@@ -1,0 +1,19 @@
+# Template file for 'ch341prog'
+pkgname=ch341prog
+version=20190901
+revision=1
+_rev=5dc8e00a83bf8884220e459d5b725f17aea1c6f3
+wrksrc=${pkgname}-${_rev}
+build_style=gnu-makefile
+makedepends="libusb-devel"
+short_desc="Simple SPI/IIC programer based on ch341a"
+maintainer="iterus <iterus@protonmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/setarcos/ch341prog"
+distfiles="${homepage}/archive/${_rev}.zip"
+checksum=0af6cd36f094df50d1d7c5117d0fd585d44fd956f12d3e0d547a99baf243b69c
+
+do_install() {
+	vbin ch341prog
+	vinstall 99-ch341a-prog.rules 644 usr/lib/udev/rules.d
+}
